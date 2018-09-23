@@ -1,0 +1,26 @@
+<nav>
+    <ul>
+        <li>
+            <a href="{{ .Site.Home.Permalink }}">{{ .Site.Home.Title }}</a>
+        </li>
+
+        {{ with .Site.GetPage "/about" }}
+            <li>
+                <a href="{{ .Permalink }}">{{ .Title }}</a>
+            </li>
+        {{ end }}
+
+        {{ range .Site.Sections }}
+        <li>
+            <a href="{{ .Permalink }}" >{{ .Title }}</a>
+            <ul>
+                {{ range .Pages }}
+                <li>
+                    <a href="{{ .Permalink }}">{{ .Title }}</a>
+                </li>
+                {{ end }}
+            </ul>
+        </li>
+        {{ end }}
+    </ul>
+</nav>

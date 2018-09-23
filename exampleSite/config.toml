@@ -1,0 +1,21 @@
+theme = "themeTailwind"
+languageCode = "en-us"
+baseurl = "http://example.com/"
+title = "Tailwind Bootstrap Example Site"
+
+author = "Dirk Olbrich"
+copyright = "Copyright © 2018, Dirk Olbrich, all rights reserved."
+
+# Code higlighting settings
+pygmentsCodefences = true
+pygmentsStyle = "vs"
+
+[params]
+    name = "Tailwind Bootstrap"
+    description = "A simple bootstraped theme for Hugo, build with Tailwindcss."
+
+    github_user = "dirkolbrich"
+    github_repo = "example"
+    github_banner = true
+
+    favicon = "favicon.ico"
