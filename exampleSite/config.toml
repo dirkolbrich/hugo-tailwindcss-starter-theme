@@ -1,4 +1,4 @@
-theme = "themeTailwind"
+theme = "hugoTheme-TailwindStarter"
 languageCode = "en-us"
 baseurl = "http://example.com/"
 title = "Tailwind Bootstrap Example Site"
