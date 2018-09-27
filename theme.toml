@@ -3,13 +3,13 @@
 
 name = "Bootstrap"
 license = "MIT"
-licenselink = "https://github.com/dirkolbrich/yourtheme/blob/master/LICENSE"
+licenselink = "https://github.com/dirkolbrich/hugo-theme-tailwindcss-starter/blob/master/LICENSE"
 description = ""
-homepage = "http://example.com/"
-tags = []
+homepage = "https://github.com/dirkolbrich/hugo-theme-tailwindcss-starter"
+tags = ["Hugo", "Tailwindcss", "theme", "starter"]
 features = []
 min_version = "0.41"
 
 [author]
   name = "Dirk Olbrich"
-  homepage = ""
+  homepage = "https://github.com/dirkolbrich/"
