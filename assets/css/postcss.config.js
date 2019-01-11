@@ -13,7 +13,7 @@ const themeDir = __dirname + '/../..';
 module.exports = {    
     plugins: [        
         require('postcss-import')({
-            path: [themedir]
+            path: [themeDir]
             }), 
         require('tailwindcss')(themeDir + '/assets/css/tailwind.js'),   
         require('@fullhuman/postcss-purgecss')({
