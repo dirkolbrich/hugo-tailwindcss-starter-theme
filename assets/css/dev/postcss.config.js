@@ -8,12 +8,14 @@ class TailwindExtractor {
     }
 }
 
+const themeDir = __dirname + '/../../..';
+
 module.exports = {    
     plugins: [        
         require('postcss-import')({
-            path: ["assets/css"]
+            path: [themeDir]
         }), 
-        require('tailwindcss')('./assets/css/tailwind.js'),   
+        require('tailwindcss')(themeDir + '/assets/css/tailwind.js'),   
         require('autoprefixer')({
             browsers: ['>1%']
         }),
