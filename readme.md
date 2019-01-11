@@ -14,13 +14,20 @@ Starter files for a Hugo theme with Tailwindcss.
 git clone https://github.com/dirkolbrich/hugo-theme-tailwindcss-starter new-theme-name
 ```
 
-- edit config.toml in `exampleSite/` to reflect new theme name
+- switch into the newly created folder and install the node packages
+
+```bash
+cd new-theme-name
+npm install
+```
+
+- edit config.toml in `exampleSite/` to reflect the new-theme-name
 
 ```toml
 theme = "new-theme-name" # your new theme name here
 ```
 
-- start server to develop with exampleSite
+- start a server to develop with exampleSite
 
 ```bash
 hugo server -s exampleSite --themesDir=../.. -w --disableFastRender
