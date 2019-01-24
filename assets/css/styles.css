@@ -1,8 +1,8 @@
 /* Tailwind Base - Variables: tailwind-config.js */
-@import "node_modules/tailwindcss/preflight";
+@import "tailwindcss/preflight";
 /* Tailwind component classes registered by plugins*/
-@import "node_modules/tailwindcss/components";
+@import "tailwindcss/components";
 /* Site Specific */
 @import "assets/css/site";
 /* Tailwind's utility classes - generated based on config file */
-@import "node_modules/tailwindcss/utilities";
+@import "tailwindcss/utilities";
