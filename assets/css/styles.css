@@ -1,5 +1,5 @@
-/* Tailwind Base - Variables: tailwind-config.js */
-@import "tailwindcss/preflight";
+/* Tailwind base - put variables under: tailwind.config.js */
+@import "tailwindcss/base";
 /* Tailwind component classes registered by plugins*/
 @import "tailwindcss/components";
 /* Site Specific */

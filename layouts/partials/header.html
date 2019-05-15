@@ -1,26 +1,29 @@
-<nav>
-    <ul>
-        <li>
-            <a href="{{ .Site.Home.Permalink }}">{{ .Site.Home.Title }}</a>
-        </li>
-
-        {{ with .Site.GetPage "/about" }}
+<header class="w-full p-4">
+    
+    <nav class="flex items-center justify-between flex-wrap">
+        <a href="{{ .Site.Home.Permalink }}" class="flex items-center text-gray-700 font-bold">
+            {{ .Site.Title }}
+        </a>
+        <div class="block sm:hidden">
+            <button id="nav-toggle" class="flex items-center px-2 py-2 text-gray-500 hover:text-blue-500">
+                <svg class="fill-current h-4 w-4" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <title>Menu</title>
+                    <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+                </svg>
+            </button>
+        </div>
+        <ul id="nav-content" class="w-full flex-grow sm:flex items-center sm:w-auto hidden sm:block justify-end list-reset">
+            {{ with .Site.GetPage "/about" }}
             <li>
-                <a href="{{ .Permalink }}">{{ .Title }}</a>
+                <a href="{{ .Permalink }}" class="inline-block text-gray-500 sm:px-2 hover:text-blue-400">{{ .Title }}</a>
             </li>
-        {{ end }}
+            {{ end }}
 
-        {{ range .Site.Sections }}
-        <li>
-            <a href="{{ .Permalink }}" >{{ .Title }}</a>
-            <ul>
-                {{ range .Pages }}
-                <li>
-                    <a href="{{ .Permalink }}">{{ .Title }}</a>
-                </li>
-                {{ end }}
-            </ul>
-        </li>
-        {{ end }}
-    </ul>
-</nav>
+            {{ range .Site.Sections }}
+            <li>
+                <a href="{{ .Permalink }}" class="inline-block text-gray-500 sm:px-2 hover:text-blue-400">{{ .Title }}</a>
+            </li>
+            {{ end }}
+        </ul>
+    </nav>
+</header>

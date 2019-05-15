@@ -15,7 +15,7 @@ module.exports = {
         require('postcss-import')({
             path: [themeDir]
             }), 
-        require('tailwindcss')(themeDir + 'assets/css/tailwind.js'),   
+        require('tailwindcss')(themeDir + 'assets/css/tailwind.config.js'),   
         require('@fullhuman/postcss-purgecss')({
             content: ['layouts/**/*.html'],
             extractors: [

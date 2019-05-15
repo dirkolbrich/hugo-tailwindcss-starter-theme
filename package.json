@@ -1,6 +1,6 @@
 {
     "name": "hugo-theme-tailwindcss-starter",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "Starter files for a Hugo theme with Tailwindcss",
     "main": "index.js",
     "repository": "https://github.com/dirkolbrich/hugo-theme-tailwindcss-starter",
@@ -15,6 +15,6 @@
         "postcss": "^7.0.16",
         "postcss-cli": "^6.1.2",
         "postcss-import": "^12.0.1",
-        "tailwindcss": "^0.7.4"
+        "tailwindcss": "^1.0.1"
     }
 }

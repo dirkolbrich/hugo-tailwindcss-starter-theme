@@ -1,13 +1,18 @@
-# Hugo Theme Tailwindcss Starter
+# Hugo Starter Theme with Tailwindcss
 
 Starter files for a Hugo theme with Tailwindcss.
 
-- set up to use [Tailwindcss](https://tailwindcss.com)
+- set up to use [Tailwindcss](https://tailwindcss.com) - v1.0.1
 - use [Hugo Pipes](https://gohugo.io/hugo-pipes/) to build and load css based on `dev` or `build` environment
 - purge unused css classes with [Purgecss](https://www.purgecss.com) for `build`, but __not__ in `dev`
-- works as separate theme repo or as local theme folder within a Hugo site
+- works as separate theme repo or as a local theme folder within a Hugo site
+- basic template setup with an index page, an about page and a posts category
+- responsive navigation header with minimal javascript to hide the nav on small screens
+- to keep that s***er down, the theme features a sticky footer
 
-## Basic Usage to develop a separate Theme Repo
+Live long and code.
+
+## Basic usage to develop a separate Theme repo
 
 - clone and rename the repo
 
@@ -15,10 +20,17 @@ Starter files for a Hugo theme with Tailwindcss.
 git clone https://github.com/dirkolbrich/hugo-theme-tailwindcss-starter new-theme-name
 ```
 
-- switch into the newly created folder and install the node packages
+- to make that theme your own, switch into the newly created folder, remove the git history from this starter repo and initiate a new git repo
 
 ```bash
 cd new-theme-name
+rm -rf .git
+git init
+```
+
+- now install the necessary node packages
+
+```bash
 npm install
 ```
 
@@ -50,10 +62,11 @@ cd new-site/themes
 git clone https://github.com/dirkolbrich/hugo-theme-tailwindcss-starter new-theme-name
 ```
 
-- switch into the newly created theme folder and install the node packages
+- switch into the newly created theme folder, remove the git history from this starter repo and install the node packages
 
 ```bash
 cd new-theme-name
+rm -rf .git
 npm install
 ```
 
@@ -71,9 +84,7 @@ cd new-site
 hugo server -w --disableFastRender
 ```
 
-Your content should go into `new-site/content`, the developement of the site layout is done within `new-site/themes/new-theme-name/layout`.
-
-Happy coding...
+Your content should go into `new-site/content`, the development of the site layout is done within `new-site/themes/new-theme-name/layout`.
 
 ## Reference
 
