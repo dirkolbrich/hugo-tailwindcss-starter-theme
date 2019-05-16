@@ -44,7 +44,7 @@ theme = "new-theme-name" # your new theme name here
 - start a server to develop with `exampleSite`
 
 ```bash
-hugo server -s exampleSite --themesDir=../.. -w --disableFastRender
+hugo server -s exampleSite --themesDir=../.. --disableFastRender
 ```
 
 ## Usage direcly within a Hugo repo as a theme package
@@ -81,7 +81,7 @@ theme = "new-theme-name" # your new theme name here
 
 ```bash
 cd new-site
-hugo server -w --disableFastRender
+hugo server --disableFastRender
 ```
 
 Your content should go into `new-site/content`, the development of the site layout is done within `new-site/themes/new-theme-name/layout`.
