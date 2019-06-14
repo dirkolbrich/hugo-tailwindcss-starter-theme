@@ -17,7 +17,6 @@ module.exports = {
         }), 
         require('tailwindcss')(themeDir + 'assets/css/tailwind.config.js'),   
         require('autoprefixer')({
-            browsers: ['>1%']
         }),
     ]
 }

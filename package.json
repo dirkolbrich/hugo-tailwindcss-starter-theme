@@ -16,5 +16,11 @@
         "postcss-cli": "^6.1.2",
         "postcss-import": "^12.0.1",
         "tailwindcss": "^1.0.4"
-    }
+    },
+    "browserslist": [
+        "last 1 version",
+        "> 1%",
+        "maintained node versions",
+        "not dead"
+    ]
 }
