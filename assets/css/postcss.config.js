@@ -26,8 +26,7 @@ module.exports = {
             fontFace: true
         }),    
         require('autoprefixer')({
-            grid: true,
-            browsers: ['>1%']
+            grid: true
         }),
         require('postcss-reporter'),
     ]
