@@ -12,6 +12,15 @@ Starter files for a Hugo theme with Tailwindcss.
 
 Live long and code.
 
+## Prerequisites
+
+Make sure to install `postcss-cli` and `autoprefixer` globally in your environment, as Hugo Pipe’s PostCSS requires it. This is mentioned in the [Hugo Docs](https://gohugo.io/hugo-pipes/postcss/).
+
+```bash
+npm install -g postcss-cli
+npm install -g autoprefixer
+```
+
 ## Basic usage to develop a separate Theme repo
 
 - clone and rename the repo
@@ -85,6 +94,22 @@ hugo server --disableFastRender
 ```
 
 Your content should go into `new-site/content`, the development of the site layout is done within `new-site/themes/new-theme-name/layout`.
+
+## How does that work anyway
+
+This theme setup uses two separate `postcss.config.js` files as a configuration used by the Hugo PostCSS Pipe. One for `dev` and one for `build`. Based on these config files, postcss builds the `styles.css` for the site. This snippet is located in `/layouts/partials/head.html` and is.
+
+```html
+{{ if .Site.IsServer }}
+    {{ $style := resources.Get "css/styles.css" | postCSS (dict "config" "./assets/css/dev/postcss.config.js") }}
+    <link rel="stylesheet" href="{{ $style.Permalink }}">
+{{ else }}
+    {{ $style := resources.Get "css/styles.css" | postCSS (dict "config" "./assets/css/postcss.config.js") | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $style.Permalink }}" integrity="{{ $style.Data.Integrity }}">
+{{ end }}
+```
+
+The `dev` config only pulls the `tailwind` package and uses `autoprefixer` on it, while the `build` config also uses `purgecss` on the resulting `tailwind` css classes, to keep the file size minimal.
 
 ## Reference
 
