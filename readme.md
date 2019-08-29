@@ -2,7 +2,7 @@
 
 Starter files for a Hugo theme with Tailwindcss.
 
-- set up to use [Tailwindcss](https://tailwindcss.com) - v1.1.0
+- set up to use [Tailwindcss](https://tailwindcss.com) - v1.1.2
 - use [Hugo Pipes](https://gohugo.io/hugo-pipes/) to build and load css based on `dev` or `build` environment
 - purge unused css classes with [Purgecss](https://www.purgecss.com) for `build`, but __not__ in `dev`
 - works as separate theme repo or as a local theme folder within a Hugo site
