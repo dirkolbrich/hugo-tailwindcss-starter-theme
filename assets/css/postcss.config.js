@@ -1,13 +1,3 @@
-// Custom PurgeCSS extractor for Tailwind that allows special characters in
-// class names.
-//
-// https://github.com/FullHuman/purgecss#extractor
-class TailwindExtractor {
-    static extract(content) {
-        return content.match(/[A-Za-z0-9-_:\/]+/g) || [];
-    }
-}
-
 const themeDir = __dirname + '/../../';
 
 module.exports = {    
@@ -15,14 +5,19 @@ module.exports = {
         require('postcss-import')({
             path: [themeDir]
             }), 
-        require('tailwindcss')(themeDir + 'assets/css/tailwind.config.js'),   
+        require('tailwindcss')(themeDir + 'assets/css/tailwind.config.js'),
+        // Configuration of purgecss for Tailwindcss
+        // see https://tailwindcss.com/docs/controlling-file-size/#setting-up-purgecss
         require('@fullhuman/postcss-purgecss')({
-            content: [themeDir + 'layouts/**/*.html'],
-            extractors: [
-            {
-                extractor: TailwindExtractor,
-                extensions: ['html']
-            }], 
+            // Specify the paths to all of the template files in your project 
+            content: [
+                themeDir + 'layouts/**/*.html',
+                themeDir + 'exampleSite/content/**/*.html',
+                'layouts/**/*.html',
+                'content/**/*.html',
+            ],
+            // Include any special characters you're using in this regular expression
+            defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [], 
             fontFace: true
         }),    
         require('autoprefixer')({
