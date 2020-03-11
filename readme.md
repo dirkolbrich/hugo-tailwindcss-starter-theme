@@ -1,10 +1,10 @@
-# Hugo Starter Theme with Tailwindcss
+# Hugo Starter Theme with Tailwind CSS
 
-Starter files for a Hugo theme with Tailwindcss.
+Starter files for a Hugo theme with Tailwind CSS.
 
-- set up to use [Tailwindcss](https://tailwindcss.com) - v1.2
+- set up to use [Tailwind CSS](https://tailwindcss.com) - v1.2
 - use [Hugo Pipes](https://gohugo.io/hugo-pipes/) to build and load css based on `dev` or `build` environment
-- purge unused css classes with [Purgecss](https://www.purgecss.com) for `build`, but __not__ in `dev`
+- purge unused css classes with [PurgeCSS](https://www.purgecss.com) for `build`, but __not__ in `dev`
 - works as separate theme repo or as a local theme folder within a Hugo site
 - basic template setup with an index page, an about page and a posts category
 - responsive navigation header with minimal javascript to hide the nav on small screens
@@ -56,7 +56,7 @@ theme = "new-theme-name" # your new theme name here
 hugo server -s exampleSite --themesDir=../.. --disableFastRender
 ```
 
-## Usage direcly within a Hugo repo as a theme package
+## Usage directly within a Hugo repo as a theme package
 
 - start a new Hugo site
 
@@ -97,7 +97,7 @@ Your content should go into `new-site/content`, the development of the site layo
 
 ## How does that work anyway
 
-This theme setup uses two separate `postcss.config.js` files as a configuration used by the Hugo PostCSS Pipe. One for `dev` and one for `build`. Based on these config files, postcss builds the `styles.css` for the site. This snippet is located in `/layouts/partials/head.html` and is.
+This theme setup uses two separate `postcss.config.js` files as a configuration used by the Hugo PostCSS Pipe. One for `dev` and one for `build`. Based on these config files, PostCSS builds the `styles.css` for the site. This snippet is located in `/layouts/partials/head.html` and is.
 
 ```html
 {{ if .Site.IsServer }}
