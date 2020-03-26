@@ -95,7 +95,49 @@ hugo server --disableFastRender
 
 Your content should go into `new-site/content`, the development of the site layout is done within `new-site/themes/new-theme-name/layout`.
 
-## How does that work anyway
+## Deploy to Netlify
+
+If you use this starter theme and want to deploy your site to [Netlify](https://www.netlify.com/), you *MAY* encounter a build error which contains the following line:
+
+```
+ERROR {your deploy time here} error: failed to transform resource: POSTCSS: failed to transform "css/styles.css" (text/css): PostCSS not found; install with "npm install postcss-cli". See https://gohugo.io/hugo-pipes/postcss/
+```
+
+That is, Netlify doesn't know the `npm` dependencies of this starter theme yet. For this to fix, please add a `package.json` file to the root of your repo with the content:
+
+```json
+{
+    "name": "my-site",
+    "version": "0.0.1",
+    "description": "that is my-site",
+    "repository": "https://github.com/you/my-site",
+    "license": "MIT",
+    "devDependencies": {
+        "@fullhuman/postcss-purgecss": "^2.1.0",
+        "autoprefixer": "^9.7.4",
+        "postcss": "^7.0.27",
+        "postcss-cli": "^7.1.0",
+        "postcss-import": "^12.0.1",
+        "tailwindcss": "^1.2.0"
+    },
+    "browserslist": [
+        "last 1 version",
+        "> 1%",
+        "maintained node versions",
+        "not dead"
+    ]
+}
+```
+
+This introduces the dependencies Tailwind CSS and PostCSS need, Netlify will run the installation automatically on deploy.
+
+### Environment variables
+
+To make the distinction between `development` and `production` environments work, add an environment variable `HUGO_ENV = "production"` to your site settings under `Settings` → `Build & deploy` → `Environment`.
+
+Or use a `netlify.toml` for a [file-based configuration](https://docs.netlify.com/configure-builds/file-based-configuration/).
+
+## How does that work anyway?
 
 This theme setup uses two separate `postcss.config.js` files as a configuration used by the Hugo PostCSS Pipe. One for `dev` and one for `build`. Based on these config files, PostCSS builds the `styles.css` for the site. This snippet is located in `/layouts/partials/head.html` and is.
 
