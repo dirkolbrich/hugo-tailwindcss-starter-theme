@@ -19,16 +19,16 @@
                 </svg>
             </button>
         </div>
-        <ul id="nav-menu" class="w-full flex-grow sm:flex items-center sm:w-auto hidden sm:block justify-end list-reset mt-2 sm:mt-0">
+        <ul id="nav-menu" class="w-full flex-grow sm:flex items-center sm:w-auto hidden sm:block justify-end list-reset mt-2 sm:mt-0 sm:space-x-2">
             {{ with .Site.GetPage "/about" }}
             <li>
-                <a href="{{ .Permalink }}" class="inline-block text-gray-500 sm:px-2 hover:text-blue-400">{{ .Title }}</a>
+                <a href="{{ .Permalink }}" class="inline-block text-gray-500 hover:text-blue-400">{{ .Title }}</a>
             </li>
             {{ end }}
 
             {{ range .Site.Sections }}
             <li>
-                <a href="{{ .Permalink }}" class="inline-block text-gray-500 sm:px-2 hover:text-blue-400">{{ .Title }}</a>
+                <a href="{{ .Permalink }}" class="inline-block text-gray-500 hover:text-blue-400">{{ .Title }}</a>
             </li>
             {{ end }}
         </ul>
