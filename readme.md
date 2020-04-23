@@ -7,7 +7,7 @@ Starter files for a Hugo theme with Tailwind CSS.
 - purge unused css classes with [PurgeCSS](https://www.purgecss.com) for `build`, but __not__ in `dev`
 - works as separate theme repo or as a local theme folder within a Hugo site
 - basic template setup with an index page, an about page and a posts category
-- responsive navigation header with minimal javascript to hide the nav on small screens
+- responsive navigation header ~~with minimal javascript~~ with pure css to hide the nav on small screens
 - to keep that s***er down, the theme features a sticky footer
 
 Live long and code.
