@@ -6,6 +6,7 @@
         <main class="flex-1 mx-4 md:mx-12 lg:mx-24 mt-4 sm:mt-16">
         {{- block "main" . }}{{- end }}
         </main>
+        {{- partial "dev-parameters.html" . -}}
         {{- partial "footer.html" . -}}
     </body>
 </html>

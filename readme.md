@@ -9,6 +9,7 @@ Starter files for a Hugo theme with Tailwind CSS.
 - basic template setup with an index page, an about page and a posts category
 - responsive navigation header ~~with minimal javascript~~ with pure css to hide the nav on small screens
 - to keep that s***er down, the theme features a sticky footer
+- included helper partial to show Hugo parameters during development
 
 Live long and code.
 
@@ -94,6 +95,10 @@ hugo server --disableFastRender
 ```
 
 Your content should go into `new-site/content`, the development of the site layout is done within `new-site/themes/new-theme-name/layout`.
+
+## Helpers
+
+Included is a partial helper `/partials/dev-parameters.html`, which shows basic Hugo parameters in development. Just delete the corresponding line from `/layouts/_default/baseof.html`, if you don`t need it anymore.
 
 ## Deploy to Netlify
 
