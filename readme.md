@@ -149,20 +149,46 @@ Or use a `netlify.toml` for a [file-based configuration](https://docs.netlify.co
 
 ## How does that work anyway?
 
-This theme setup uses two separate `postcss.config.js` files as a configuration used by the Hugo PostCSS Pipe. One for `dev` and one for `build`. Based on these config files, PostCSS builds the `styles.css` for the site. This snippet is located in `/layouts/partials/head.html` and is.
+With the latest version of Hugo v0.69.0 and Tailwind CSS v1.4. the setup for Tailwind CSS and the PurgeCSS process does not need two separate `postcss.confog.js` versions any more. The setup is now done within one file.
+
+Within `postcss.config.js` a `purgecss` function is defined, which is only called based on the environment variable `HUGO_ENVIRONMENT === 'production'`.
+
+```js
+const themeDir = __dirname + '/../../';
+
+const purgecss = require('@fullhuman/postcss-purgecss')({
+    ... // see Tailwind CSS documentation for the PurgeCSS extractor
+})
+
+module.exports = {
+    plugins: [
+        require('postcss-import')({
+            path: [themeDir]
+            }), 
+        require('tailwindcss')(themeDir + 'assets/css/tailwind.config.js'),
+        require('autoprefixer')({
+            path: [themeDir],
+            grid: true
+        }),
+        ...(process.env.HUGO_ENVIRONMENT === 'production' ? [purgecss] : [])
+    ]
+}
+```
+
+During the build process Hugo Pipes checks this variable too and build the `styles.css` with some additional minification. This snippet is located in `/layouts/partials/head.html`.
 
 ```html
+{{ $styles := resources.Get "css/styles.css" | postCSS (dict "config" "./assets/css/postcss.config.js") }}
 {{ if .Site.IsServer }}
-    {{ $style := resources.Get "css/styles.css" | postCSS (dict "config" "./assets/css/dev/postcss.config.js") }}
-    <link rel="stylesheet" href="{{ $style.Permalink }}">
+    <link rel="stylesheet" href="{{ $styles.RelPermalink }}">
 {{ else }}
-    {{ $style := resources.Get "css/styles.css" | postCSS (dict "config" "./assets/css/postcss.config.js") | minify | fingerprint }}
-    <link rel="stylesheet" href="{{ $style.Permalink }}" integrity="{{ $style.Data.Integrity }}">
+    {{ $styles := $styles| minify | fingerprint | resources.PostProcess }}
+    <link rel="stylesheet" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}">
 {{ end }}
 ```
 
-The `dev` config only pulls the `tailwind` package and uses `autoprefixer` on it, while the `build` config also uses `purgecss` on the resulting `tailwind` css classes, to keep the file size minimal.
-
 ## Reference
 
-See the Hugo forum discussion "[Regenerating assets directory for Hugo Pipes](https://discourse.gohugo.io/t/regenerating-assets-directory-for-hugo-pipes-solved/13175)" for the functionality concept.
+Documentation for Hugo's [PostCSS setup](https://gohugo.io/hugo-pipes/postprocess/).
+
+Documentation for [Tailwind CSS setup of calling PurgeCSS manually](https://tailwindcss.com/docs/controlling-file-size#setting-up-purgecss-manually).
