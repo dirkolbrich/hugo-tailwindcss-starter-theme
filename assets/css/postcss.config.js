@@ -29,8 +29,7 @@ module.exports = {
             }), 
         require('tailwindcss')(themeDir + 'assets/css/tailwind.config.js'),
         require('autoprefixer')({
-            path: [themeDir],
-            grid: true
+            path: [themeDir]
         }),
         ...(process.env.HUGO_ENVIRONMENT === 'production' ? [purgecss] : [])
     ]
