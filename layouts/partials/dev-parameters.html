@@ -82,11 +82,11 @@
             </tr>
             <tr class="p-2 border-t">
                 <td>.File</td>
-                <td>{{ printf "%v" .File }}</td>
+                <td>{{ if .File }}{{ printf "%v" .File }}{{ else}}""{{ end }}</td>
             </tr>
             <tr class="p-2 border-t">
                 <td>.File.Dir</td>
-                <td>{{ printf "%#v" .File.Dir }}</td>
+                <td>{{ if .File }}{{ printf "%#v" .File.Dir }}{{ else}}""{{ end }}</td>
             </tr>
         </tbody>
     </table>
