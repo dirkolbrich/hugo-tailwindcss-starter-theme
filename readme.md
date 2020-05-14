@@ -22,6 +22,8 @@ npm install -g postcss-cli
 npm install -g autoprefixer
 ```
 
+Make sure to use a minimum Hugo version of v0.69.0 and above.
+
 ## Basic usage to develop a separate Theme repo
 
 - clone and rename the repo
