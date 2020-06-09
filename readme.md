@@ -151,7 +151,7 @@ Or use a `netlify.toml` for a [file-based configuration](https://docs.netlify.co
 
 ## How does that work anyway?
 
-With the latest version of Hugo v0.69.0 and Tailwind CSS v1.4. the setup for Tailwind CSS and the PurgeCSS process does not need two separate `postcss.confog.js` versions any more. The setup is now done within one file.
+With the latest version of Hugo v0.69.0 and Tailwind CSS v1.4. the setup for Tailwind CSS and the PurgeCSS process does not need two separate `postcss.config.js` versions any more. The setup is now done within one file.
 
 Within `postcss.config.js` a `purgecss` function is defined, which is only called based on the environment variable `HUGO_ENVIRONMENT === 'production'`.
 
