@@ -5,9 +5,11 @@ const purgecss = require('@fullhuman/postcss-purgecss')({
     // Specify the paths to all of the template files in your project
     content: [
         themeDir + 'layouts/**/*.html',
-        themeDir + 'exampleSite/content/**/*.html',
+        themeDir + 'content/**/*.html',
         'layouts/**/*.html',
         'content/**/*.html',
+        'exampleSite/layouts/**/*.html',
+        'exampleSite/content/**/*.html',
     ],
 
     // This is the function used to extract class names from your templates
