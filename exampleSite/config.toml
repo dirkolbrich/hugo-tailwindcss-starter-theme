@@ -6,6 +6,9 @@ title = "Hugo Tailwindcss Starter"
 author = "Dirk Olbrich"
 copyright = "Copyright © 2019, Dirk Olbrich, all rights reserved."
 
+# Enable Section Menu for Lazy Bloggers
+sectionPagesMenu = "main"
+
 # Code higlighting settings
 pygmentsCodefences = true
 pygmentsStyle = "vs"
