@@ -7,7 +7,8 @@
     "author": "dirkolbrich <github@dirkolbrich.de>",
     "license": "MIT",
     "scripts": {
-        "start": "hugo --gc"
+        "server": "hugo server -s exampleSite --themesDir=../.. --disableFastRender",
+        "build": "hugo -s exampleSite --themesDir=../.."
     },
     "devDependencies": {
         "@fullhuman/postcss-purgecss": "^2.3.0",
