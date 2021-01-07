@@ -3,6 +3,7 @@
 Starter files for a Hugo theme with Tailwind CSS.
 
 - set up to use [Tailwind CSS](https://tailwindcss.com) - v2.0+
+- includes the [@tailwindcss/typography](https://tailwindcss.com/docs/typography-plugin) plugin for styling of markdown content
 - use [Hugo Pipes](https://gohugo.io/hugo-pipes/) to build and load css based on `dev` or `build` environment
 - purge unused css classes with [PurgeCSS](https://www.purgecss.com) for `build`, but __not__ in `dev`
 - works as separate theme repo or as a local theme folder within a Hugo site
@@ -11,7 +12,11 @@ Starter files for a Hugo theme with Tailwind CSS.
 - to keep that s***er down, the theme features a sticky footer
 - included helper partials to show Hugo parameters and Tailwind CSS breakpoints during development
 
-Live long and code.
+_Live long and code._
+
+## What this theme is NOT
+
+This theme is a starter setup theme to aid in developing Hugo themes using the Tailwind CSS framework. It is ***not*** a standalone theme ready to use.
 
 ## Prerequisites
 
@@ -126,6 +131,7 @@ That is, Netlify doesn't know the `npm` dependencies of this starter theme yet. 
     "license": "MIT",
     "devDependencies": {
         "@fullhuman/postcss-purgecss": "^3.1.3",
+        "@tailwindcss/typography": "^0.3.1",
         "autoprefixer": "^10.2.0",
         "postcss": "^8.2.3",
         "postcss-cli": "^8.3.1",
