@@ -2,7 +2,7 @@
 
 Starter files for a Hugo theme with Tailwind CSS.
 
-- set up to use [Tailwind CSS](https://tailwindcss.com) - v1.6
+- set up to use [Tailwind CSS](https://tailwindcss.com) - v2.0+
 - use [Hugo Pipes](https://gohugo.io/hugo-pipes/) to build and load css based on `dev` or `build` environment
 - purge unused css classes with [PurgeCSS](https://www.purgecss.com) for `build`, but __not__ in `dev`
 - works as separate theme repo or as a local theme folder within a Hugo site
@@ -125,12 +125,12 @@ That is, Netlify doesn't know the `npm` dependencies of this starter theme yet. 
     "repository": "https://github.com/you/my-site",
     "license": "MIT",
     "devDependencies": {
-        "@fullhuman/postcss-purgecss": "^2.1.0",
-        "autoprefixer": "^9.7.4",
-        "postcss": "^7.0.27",
-        "postcss-cli": "^7.1.0",
-        "postcss-import": "^12.0.1",
-        "tailwindcss": "^1.2.0"
+        "@fullhuman/postcss-purgecss": "^3.1.3",
+        "autoprefixer": "^10.2.0",
+        "postcss": "^8.2.3",
+        "postcss-cli": "^8.3.1",
+        "postcss-import": "^14.0.0",
+        "tailwindcss": "^2.0.2"
     },
     "browserslist": [
         "last 1 version",
