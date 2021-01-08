@@ -29,6 +29,13 @@ npm install -g autoprefixer
 
 Make sure to use a minimum Hugo version of v0.69.0 and above.
 
+Set the `writeStats` option in your Hugo `config` file, so that purging of CSS classes works in production. See `/exampleSite/config.toml` as a guideline.
+
+```toml
+[build]
+  writeStats = true
+```
+
 ## Basic usage to develop a separate Theme repo
 
 - clone and rename the repo
@@ -157,15 +164,18 @@ Or use a `netlify.toml` for a [file-based configuration](https://docs.netlify.co
 
 ## How does that work anyway?
 
-With the latest version of Hugo v0.69.0 and Tailwind CSS v1.4. the setup for Tailwind CSS and the PurgeCSS process does not need two separate `postcss.config.js` versions any more. The setup is now done within one file.
-
 Within `postcss.config.js` a `purgecss` function is defined, which is only called based on the environment variable `HUGO_ENVIRONMENT === 'production'`.
 
 ```js
 const themeDir = __dirname + '/../../';
 
 const purgecss = require('@fullhuman/postcss-purgecss')({
-    ... // see Tailwind CSS documentation for the PurgeCSS extractor
+    // see https://gohugo.io/hugo-pipes/postprocess/#css-purging-with-postcss
+    content: ['./hugo_stats.json'],
+    defaultExtractor: (content) => {
+        let els = JSON.parse(content).htmlElements;
+        return els.tags.concat(els.classes, els.ids);
+    }
 })
 
 module.exports = {
@@ -198,5 +208,3 @@ During the build process Hugo Pipes checks this variable too and build the `styl
 ## Reference
 
 Documentation for Hugo's [PostCSS setup](https://gohugo.io/hugo-pipes/postprocess/).
-
-Documentation for [Tailwind CSS setup of calling PurgeCSS manually](https://tailwindcss.com/docs/controlling-file-size#setting-up-purgecss-manually).
