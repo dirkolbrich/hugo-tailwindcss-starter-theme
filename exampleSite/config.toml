@@ -19,3 +19,6 @@ pygmentsStyle = "vs"
     github_banner = true
 
     favicon = "favicon.ico"
+
+[build]
+  writeStats = true
