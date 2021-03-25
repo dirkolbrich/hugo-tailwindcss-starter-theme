@@ -23,5 +23,8 @@
         "> 1%",
         "maintained node versions",
         "not dead"
-    ]
+    ],
+    "dependencies": {
+        "@tailwindcss/forms": "^0.2.1"
+    }
 }

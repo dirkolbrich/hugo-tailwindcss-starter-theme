@@ -9,7 +9,7 @@ const purgecss = require('@fullhuman/postcss-purgecss')({
     ],
     defaultExtractor: (content) => {
         let els = JSON.parse(content).htmlElements;
-        return els.tags.concat(els.classes, els.ids);
+        return els.tags.concat(els.tags, els.classes, els.ids);
     }
 })
 
