@@ -6,10 +6,6 @@ title = "Hugo Tailwindcss Starter"
 author = "Dirk Olbrich"
 copyright = "Copyright © 2019, Dirk Olbrich, all rights reserved."
 
-# Code higlighting settings
-pygmentsCodefences = true
-pygmentsStyle = "vs"
-
 [params]
     name = "Hugo Tailwindcss Starter"
     description = "A simple bootstraped theme for Hugo, build with Tailwindcss."
@@ -22,3 +18,8 @@ pygmentsStyle = "vs"
 
 [build]
   writeStats = true
+
+# syntax highlight settings
+[markup]
+  [markup.highlight]
+    style = "dracula"

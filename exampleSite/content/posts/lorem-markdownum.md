@@ -27,13 +27,14 @@ tectis ferox. Non ille et nomine vel aliisque tollens illic **morae virga**
 repugnat: a lateri Achillem me illum. Acoetes potentior matrique occasu laborum
 sua letum Inachidas irata cognoscere quae dum prohibent est exilio.
 
-```
-var executable = reimageSpider.archie(cable_shareware + hdd) + pram;
-var array_udp_soft = phreaking;
-var market = surge(pplE(ipvWirelessCard, donationware));
-onCpa(3 * constant, coreInProm(
-        gibibyte.databaseInfringementIntellectual.san_configuration(program)),
-        icf_dma_blog / sliNetworkingBank(13150, ppga, whoisNewlinePrinter));
+```go
+package main
+
+import "fmt"
+
+func main() {
+    fmt.Println("Hello, World!")
+}
 ```
 
 ## Haec posuitque altorum
