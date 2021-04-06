@@ -3,7 +3,7 @@
 
 name = "hugo-theme-tailwindcss-starter"
 license = "MIT"
-licenselink = "https://github.com/dirkolbrich/hugo-theme-tailwindcss-starter/blob/master/LICENSE"
+licenselink = "https://github.com/dirkolbrich/hugo-theme-tailwindcss-starter/blob/main/LICENSE"
 description = "A boilerplate starter theme using Tailwind CSS."
 homepage = "https://github.com/dirkolbrich/hugo-theme-tailwindcss-starter"
 tags = ["Hugo", "Tailwind CSS", "theme", "starter", "boilerplate"]

@@ -10,13 +10,13 @@
         "start": "hugo --gc"
     },
     "devDependencies": {
-        "@fullhuman/postcss-purgecss": "^4.0.2",
+        "@fullhuman/postcss-purgecss": "^4.0.3",
         "@tailwindcss/typography": "^0.4.0",
-        "autoprefixer": "^10.2.4",
-        "postcss": "^8.2.6",
+        "autoprefixer": "^10.2.5",
+        "postcss": "^8.2.9",
         "postcss-cli": "^8.3.1",
-        "postcss-import": "^14.0.0",
-        "tailwindcss": "^2.0.3"
+        "postcss-import": "^14.0.1",
+        "tailwindcss": "^2.1.1"
     },
     "browserslist": [
         "last 1 version",
