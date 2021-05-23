@@ -158,6 +158,8 @@ This introduces the dependencies Tailwind CSS and PostCSS need, Netlify will run
 
 ### Environment variables
 
+Set environment variable `NODE_VERSION` to `12` (or higher)  on `Settings` → `Build & deploy` → `Environment` as TailwindCSS ^2.0 requirement.
+
 To make the distinction between `development` and `production` environments work, add an environment variable `HUGO_ENV = "production"` to your site settings under `Settings` → `Build & deploy` → `Environment`.
 
 Or use a `netlify.toml` for a [file-based configuration](https://docs.netlify.com/configure-builds/file-based-configuration/).
