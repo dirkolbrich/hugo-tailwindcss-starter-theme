@@ -1,8 +1,15 @@
-/* Tailwind base - put variables under: tailwind.config.js */
-@import "node_modules/tailwindcss/base";
-/* Tailwind component classes registered by plugins*/
-@import "node_modules/tailwindcss/components";
+/* TailwindCSS base styles */
+/* see https://tailwindcss.com/docs/functions-and-directives#tailwind */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
+
 /* Site Specific */
-@import "assets/css/site";
-/* Tailwind's utility classes - generated based on config file */
-@import "node_modules/tailwindcss/utilities";
+/* put site specific css styles here using the @layer directive */
+/* see https://tailwindcss.com/docs/functions-and-directives#layer */
+@layer components {
+    .welcome-headline {
+        @apply text-blue-700;
+    }
+}

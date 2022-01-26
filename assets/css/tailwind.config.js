@@ -1,9 +1,17 @@
+const colors = require('tailwindcss/colors')
+
 module.exports = {
+  content: [
+    "./layouts/**/*.html",
+    "./content/**/*.html"
+  ],
   theme: {
-    extend: {}
+    extend: {},
   },
-  variants: {},
   plugins: [
     require('@tailwindcss/typography'),
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/aspect-ratio'),
+    require('@tailwindcss/line-clamp'),
   ]
 }
