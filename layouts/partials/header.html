@@ -21,13 +21,13 @@
 
         <input id="nav-toggle" type=checkbox class="hidden">
         <label id="show-button" for="nav-toggle"
-            class="flex items-center block sm:hidden text-gray-500 hover:text-blue-500">
+            class="flex items-center sm:hidden text-gray-500 hover:text-blue-500">
             <svg class="fill-current h-4 w-4" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                 <title>Menu Open</title>
                 <path d="M0 3h20v2H0V3z m0 6h20v2H0V9z m0 6h20v2H0V0z" />
             </svg>
         </label>
-        <label id="hide-button" for="nav-toggle" class="flex items-center hidden text-gray-700 hover:text-blue-500">
+        <label id="hide-button" for="nav-toggle" class="items-center hidden text-gray-700 hover:text-blue-500">
             <svg class="fill-current h-4 w-4" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                 <title>Menu Close</title>
                 <polygon points="11 9 22 9 22 11 11 11 11 22 9 22 9 11 -2 11 -2 9 9 9 9 -2 11 -2"
@@ -35,7 +35,7 @@
             </svg>
         </label>
 
-        <ul id="nav-menu" class="sm:flex w-full sm:w-auto hidden sm:block mt-2 sm:mt-0 sm:space-x-2">
+        <ul id="nav-menu" class="sm:flex w-full sm:w-auto hidden mt-2 sm:mt-0 sm:space-x-2">
             {{ with .Site.GetPage "/about" }}
             <li>
                 <a href="{{ .Permalink }}" class="text-gray-500 hover:text-blue-400">{{ .Title }}</a>
