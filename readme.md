@@ -2,15 +2,19 @@
 
 Starter files for a Hugo theme with Tailwind CSS.
 
-- set up to use [Tailwind CSS](https://tailwindcss.com) - v2.0+
-- includes the [@tailwindcss/typography](https://tailwindcss.com/docs/typography-plugin) plugin for styling of markdown content
+- set up to use [Tailwind CSS](https://tailwindcss.com) v3.0+
+- includes the official Tailwind CSS plugins
+  - [Typography](https://tailwindcss.com/docs/typography-plugin) for styling of markdown content
+  - [Forms](https://github.com/tailwindlabs/tailwindcss-forms) for basic resets for form styles
+  - [Aspect Ratio](https://github.com/tailwindlabs/tailwindcss-aspect-ratio) to give elements a fixed aspect ratio
+  - [Line Clamp](https://github.com/tailwindlabs/tailwindcss-line-clamp) for truncating text
 - use [Hugo Pipes](https://gohugo.io/hugo-pipes/) to build and load css based on `dev` or `build` environment
 - purge unused css classes with [PurgeCSS](https://www.purgecss.com) for `build`, but __not__ in `dev`
 - works as separate theme repo or as a local theme folder within a Hugo site
 - basic template setup with an index page, an about page and a posts category
 - responsive navigation header ~~with minimal javascript~~ with pure css to hide the nav on small screens
 - to keep that s***er down, the theme features a sticky footer
-- included helper partials to show Hugo parameters and Tailwind CSS breakpoints during development
+- included development helper partials to show Hugo parameters and Tailwind CSS breakpoints during development
 
 _Live long and code._
 
@@ -44,7 +48,7 @@ Set the `writeStats` option in your Hugo `config` file, so that purging of CSS c
 git clone https://github.com/dirkolbrich/hugo-theme-tailwindcss-starter new-theme-name
 ```
 
-- to make that theme your own, switch into the newly created folder, remove the git history from this starter repo and initiate a new git repo
+- make the theme your own by removing the git history from the cloned starter repo and initiate a new git repo
 
 ```bash
 cd new-theme-name
@@ -52,7 +56,7 @@ rm -rf .git
 git init
 ```
 
-- now install the necessary node packages
+- install the necessary node packages
 
 ```bash
 npm install
@@ -112,55 +116,12 @@ Your content should go into `new-site/content`, the development of the site layo
 
 ## Helpers
 
-Included are the following helpers for the development phase (not visible in production):
+Included are some helpers for the development phase (not visible in production):
 
-- `/partials/dev-parameters.html`, which shows basic Hugo page parameters
-- `/partials/dev-size-indicator.html`, which displays a floating circle in the upper right corner to indicate the Tailwind CSS responsive breakpoints
+- `/partials/dev/parameters.html` shows basic Hugo page parameters
+- `/partials/dev/size-indicator.html` displays a floating circle in the upper right corner to indicate the current Tailwind CSS responsive breakpoint
 
 If you don't need any of these helpers anymore, just delete the corresponding line from `/layouts/_default/baseof.html`.
-
-## Deploy to Netlify
-
-If you use this starter theme and want to deploy your site to [Netlify](https://www.netlify.com/), you *MAY* encounter a build error which contains the following line:
-
-```bash
-ERROR {your deploy time here} error: failed to transform resource: POSTCSS: failed to transform "css/styles.css" (text/css): PostCSS not found; install with "npm install postcss-cli". See https://gohugo.io/hugo-pipes/postcss/
-```
-
-That is, Netlify doesn't know the `npm` dependencies of this starter theme yet. For this to fix, please add a `package.json` file to the root of your repo with the content:
-
-```json
-{
-    "name": "my-site",
-    "version": "0.0.1",
-    "description": "that is my-site",
-    "repository": "https://github.com/you/my-site",
-    "license": "MIT",
-    "devDependencies": {
-        "@fullhuman/postcss-purgecss": "^3.1.3",
-        "@tailwindcss/typography": "^0.3.1",
-        "autoprefixer": "^10.2.0",
-        "postcss": "^8.2.3",
-        "postcss-cli": "^8.3.1",
-        "postcss-import": "^14.0.0",
-        "tailwindcss": "^2.0.2"
-    },
-    "browserslist": [
-        "last 1 version",
-        "> 1%",
-        "maintained node versions",
-        "not dead"
-    ]
-}
-```
-
-This introduces the dependencies Tailwind CSS and PostCSS need, Netlify will run the installation automatically on deploy.
-
-### Environment variables
-
-To make the distinction between `development` and `production` environments work, add an environment variable `HUGO_ENV = "production"` to your site settings under `Settings` → `Build & deploy` → `Environment`.
-
-Or use a `netlify.toml` for a [file-based configuration](https://docs.netlify.com/configure-builds/file-based-configuration/).
 
 ## How does that work anyway?
 
@@ -171,22 +132,23 @@ const themeDir = __dirname + '/../../';
 
 const purgecss = require('@fullhuman/postcss-purgecss')({
     // see https://gohugo.io/hugo-pipes/postprocess/#css-purging-with-postcss
-    content: ['./hugo_stats.json'],
+    content: [
+        './hugo_stats.json',
+        themeDir + '/hugo_stats.json',
+        'exampleSite/hugo_stats.json',
+    ],
+    safelist : [ /type/ ], // this helps to not purge type attributes, this is needed for the Typography plugin
     defaultExtractor: (content) => {
         let els = JSON.parse(content).htmlElements;
         return els.tags.concat(els.classes, els.ids);
     }
 })
 
-module.exports = {
+module.exports = {    
     plugins: [
-        require('postcss-import')({
-            path: [themeDir]
-            }), 
         require('tailwindcss')(themeDir + 'assets/css/tailwind.config.js'),
         require('autoprefixer')({
-            path: [themeDir],
-            grid: true
+            path: [themeDir]
         }),
         ...(process.env.HUGO_ENVIRONMENT === 'production' ? [purgecss] : [])
     ]
