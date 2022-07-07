@@ -1,0 +1,37 @@
+{{ if .Site.IsServer }}
+<button id="container-menu" onclick="changeContainerVisibility()"
+    class="fixed top-0 right-0 mt-24 mr-8 w-8 h-8 rounded-full text-gray-700 text-sm bg-gray-200 uppercase pointer-events-auto">
+    <span>C</span>
+</button>
+
+<div id="container-area"
+    class="fixed inset-x-0 top-0 -z-50 container mx-auto h-full bg-red-200 bg-opacity-25 pointer-events-none">
+    <p></p>
+</div>
+
+<script>
+    function setContainerVisibility(data) {
+        var showContainer = data;
+        var e = document.querySelector("#container-area");
+        if (e.classList.contains("hidden") == showContainer) {
+            e.classList.toggle("hidden");
+        }
+        sessionStorage.setItem("showContainer", showContainer);
+    }
+
+    function changeContainerVisibility() {
+        var e = document.querySelector("#container-area");
+        var showContainer = e.classList.contains("hidden") ? true : false;
+        setContainerVisibility(showContainer);
+    }
+
+    function setupContainerIndicator() {
+        /* load variables from session storage */
+        var showContainer = sessionStorage.getItem("showContainer") === "true";
+
+        setContainerVisibility(showContainer);
+    }
+
+    window.onload = setupContainerIndicator;
+</script>
+{{ end }}
