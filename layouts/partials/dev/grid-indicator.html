@@ -203,7 +203,7 @@
         }
         setCheckbox("#show-container", showContainer);
 
-        localStorage.setItem("showContainer", showContainer);
+        sessionStorage.setItem("showContainer", showContainer);
     }
 
     function changeContainerVisibility() {
@@ -220,7 +220,7 @@
         }
         setCheckbox("#show-grid", showGrid);
 
-        localStorage.setItem("showGrid", showGrid);
+        sessionStorage.setItem("showGrid", showGrid);
     }
 
     function changeGridVisibility() {
@@ -235,7 +235,7 @@
         removeClassWith(e, 'px-');
         e.classList.add('px-' + containerPadding);
 
-        localStorage.setItem("containerPadding", containerPadding);
+        sessionStorage.setItem("containerPadding", containerPadding);
     }
 
     function changeGridCols(data) {
@@ -251,7 +251,7 @@
             e.appendChild(col);
         }
 
-        localStorage.setItem("gridCols", gridCols);
+        sessionStorage.setItem("gridCols", gridCols);
     }
 
     function changeGridGap(data) {
@@ -265,16 +265,16 @@
         e.offsetHeight;
         e.classList.toggle('hidden');
 
-        localStorage.setItem("gridGap", gridGap);
+        sessionStorage.setItem("gridGap", gridGap);
     }
 
     function setupSizeIndicator() {
         /* load variables from local storage */
-        var showContainer = localStorage.getItem("showContainer") === "true";
-        var showGrid = localStorage.getItem("showGrid") === "true";
-        var containerPadding = localStorage.getItem("containerPadding");
-        var gridCols = localStorage.getItem("gridCols");
-        var gridGap = localStorage.getItem("gridGap");
+        var showContainer = sessionStorage.getItem("showContainer") === "true";
+        var showGrid = sessionStorage.getItem("showGrid") === "true";
+        var containerPadding = sessionStorage.getItem("containerPadding");
+        var gridCols = sessionStorage.getItem("gridCols");
+        var gridGap = sessionStorage.getItem("gridGap");
 
         /* check for null variables -> set defaults */
         if (!containerPadding) { containerPadding = 8; }
