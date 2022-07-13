@@ -1,0 +1,7 @@
+{{ if .Site.IsServer }}
+<div class="fixed top-0 right-0 mt-12 mr-8 z-50">
+    {{- partial "dev/size-indicator.html" . -}}
+    {{- partial "dev/container-indicator.html" . -}}
+    {{- partial "dev/parameters.html" . -}}
+</div>
+{{ end }}
