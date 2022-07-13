@@ -45,7 +45,7 @@ Set the `writeStats` option in your Hugo `config` file, so that purging of CSS c
 - clone and rename the repo
 
 ```bash
-git clone https://github.com/dirkolbrich/hugo-theme-tailwindcss-starter new-theme-name
+git clone https://github.com/dirkolbrich/hugo-tailwindcss-starter-theme new-theme-name
 ```
 
 - make the theme your own by removing the git history from the cloned starter repo and initiate a new git repo
@@ -87,7 +87,7 @@ hugo new site new-site
 
 ```bash
 cd new-site/themes
-git clone https://github.com/dirkolbrich/hugo-theme-tailwindcss-starter new-theme-name
+git clone https://github.com/dirkolbrich/hugo-tailwindcss-starter-theme new-theme-name
 ```
 
 - switch into the newly created theme folder, remove the git history from this starter repo and install the node packages
