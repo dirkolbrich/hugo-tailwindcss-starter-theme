@@ -1,5 +1,11 @@
 {{ if .Site.IsServer }}
-<div class="h-40 mb-4 py-4 px-4 overflow-y-auto scrolling-touch border-t border-gray-200">
+<button id="parameter-menu" onclick="changeParameterVisibility()"
+    class="fixed top-0 right-0 mt-36 mr-8 w-8 h-8 rounded-full text-gray-700 text-sm bg-gray-200 uppercase pointer-events-auto">
+    <span>P</span>
+</button>
+
+<div id="parameter-area"
+    class="fixed w-full z-50 bottom-0 h-1/2 p-4 overflow-y-auto scroll-auto scroll-py-4 touch-auto bg-white/[.95] border-y-8 border-white/50 hidden">
     <table class="w-full text-left table-auto table-collapse border-gray-200">
         <caption class="text-left pb-2">Hugo Variables for the current page.</caption>
         <thead>
@@ -91,4 +97,30 @@
         </tbody>
     </table>
 </div>
+
+<script>
+    function setParameterVisibility(data) {
+        var showParameter = data;
+        var e = document.querySelector("#parameter-area");
+        if (e.classList.contains("hidden") == showParameter) {
+            e.classList.toggle("hidden");
+        }
+        sessionStorage.setItem("showParameter", showParameter);
+    }
+
+    function changeParameterVisibility() {
+        var e = document.querySelector("#parameter-area");
+        var showParameter = e.classList.contains("hidden") ? true : false;
+        setParameterVisibility(showParameter);
+    }
+
+    function setupParameterIndicator() {
+        /* load variables from session storage */
+        var showParameter = sessionStorage.getItem("showParameter") === "true";
+
+        setParameterVisibility(showParameter);
+    }
+
+    window.onload = setupParameterIndicator;
+</script>
 {{ end }}
