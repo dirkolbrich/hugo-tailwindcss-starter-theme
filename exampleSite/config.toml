@@ -11,7 +11,7 @@ copyright = "Copyright © 2019, Dirk Olbrich, all rights reserved."
     description = "A simple bootstraped theme for Hugo, build with Tailwindcss."
 
     github_user = "dirkolbrich"
-    github_repo = "https://github.com/dirkolbrich/hugo-theme-tailwindcss-starter"
+    github_repo = "https://github.com/dirkolbrich/hugo-tailwindcss-starter-theme"
     github_banner = true
 
     favicon = "favicon.ico"
