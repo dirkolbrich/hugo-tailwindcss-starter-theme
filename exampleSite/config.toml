@@ -1,4 +1,4 @@
-theme = "hugo-theme-tailwindcss-starter"
+theme = "hugo-tailwindcss-starter-theme"
 languageCode = "en-us"
 baseurl = "http://example.com/"
 title = "Hugo Tailwindcss Starter"
