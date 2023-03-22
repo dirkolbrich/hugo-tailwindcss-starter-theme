@@ -5,7 +5,7 @@
 <body class="flex flex-col min-h-screen">
     {{- partial "dev/dev-tools.html" . -}}
     {{- partial "header.html" . -}}
-    <main class="flex-1 mx-4 md:mx-12 lg:mx-24 mt-4 sm:mt-16">
+    <main class="flex-1 grow mx-auto w-screen max-w-screen-2xl px-6 sm:px-7 xl:px-8 2xl:px-10 pt-4 sm:pt-16">
         {{- block "main" . }}{{- end }}
     </main>
     {{- partial "footer.html" . -}}
