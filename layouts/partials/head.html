@@ -2,13 +2,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{{ block "title" . }}
-    {{- .Title }} - {{ .Site.Title -}}
-    {{ end }}</title>
+        {{- .Title }} - {{ .Site.Title -}}
+        {{ end }}</title>
     {{- if .Description }}
     <meta name="description" content="{{ .Description }}" />
     {{ end -}}
     {{- if .Keywords }}
-    <meta name="keywords" content="{{ delimit .Keywords "," }}" />
+    <meta name="keywords" content="{{ delimit .Keywords " ," }}" />
     {{ end -}}
     {{- if .Params.Author }}
     <meta name="author" content="{{ .Params.Author}}" />
@@ -19,7 +19,16 @@
     {{- if .Site.IsServer }}
     <link rel="stylesheet" href="{{ $styles.RelPermalink }}">
     {{ else }}
-        {{- $styles := $styles| minify | fingerprint | resources.PostProcess -}}
+    {{- $styles := $styles| minify | fingerprint | resources.PostProcess -}}
     <link rel="stylesheet" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}">
     {{ end -}}
+
+    <script>
+        // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    </script>
 </head>

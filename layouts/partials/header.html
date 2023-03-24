@@ -15,12 +15,13 @@
     </style>
 
     <nav class="flex items-center justify-between flex-wrap">
-        <a href="{{ .Site.Home.Permalink }}" class="flex items-center text-gray-700 font-bold">
+        <a href="{{ .Site.Home.Permalink }}" class="flex items-center text-slate-800 dark:text-slate-200 font-bold">
             {{ .Site.Title }}
         </a>
 
         <input id="nav-toggle" type=checkbox class="hidden">
-        <label id="show-button" for="nav-toggle" class="flex items-center sm:hidden text-gray-500 hover:text-blue-500">
+        <label id="show-button" for="nav-toggle"
+            class="flex items-center sm:hidden text-slate-600 dark:text-slate-400 hover:text-sky-500">
             <svg class="fill-current h-4 w-4" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                 <title>Menu Open</title>
                 <path d="M0 3h20v2H0V3z m0 6h20v2H0V9z m0 6h20v2H0V0z" />
@@ -45,6 +46,92 @@
                 <a href="{{ .Permalink }}" class="text-gray-500 hover:text-blue-400">{{ .Title }}</a>
             </li>
             {{ end }}
+            <li>
+                <label class="sr-only">Theme</label>
+                <button type="button" id="theme-toogle" onclick="changeTheme()"
+                    class="text-slate-600 dark:text-slate-400 hover:text-sky-500 dark:hover:text-sky-500 rounded p-1">
+                    <svg id="theme-toggle-dark" class="w-4 h-4 hidden" fill="currentColor" viewBox="0 0 32 32"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="16" cy="16" r="15" />
+                    </svg>
+                    <svg id="theme-toggle-light" class="w-4 h-4 hidden" fill="currentColor" viewBox="0 0 32 32"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M16,1C24.279,1 31,7.721 31,16C31,24.279 24.279,31 16,31C7.721,31 1,24.279 1,16C1,7.721 7.721,1 16,1ZM16,5C9.929,5 5,9.929 5,16C5,22.071 9.929,27 16,27C22.071,27 27,22.071 27,16C27,9.929 22.071,5 16,5Z" />
+                    </svg>
+                    <svg id="theme-toggle-system" class="w-4 h-4 hidden" fill="currentColor" viewBox="0 0 32 32"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <g>
+                            <path
+                                d="M16,1C24.279,1 31,7.721 31,16C31,24.279 24.279,31 16,31C7.721,31 1,24.279 1,16C1,7.721 7.721,1 16,1ZM16,5C9.929,5 5,9.929 5,16C5,22.071 9.929,27 16,27C22.071,27 27,22.071 27,16C27,9.929 22.071,5 16,5Z" />
+                            <path d="M16,31C7.721,31 1,24.279 1,16C1,7.721 7.721,1 16,1L16,31Z" />
+                        </g>
+                    </svg>
+                </button>
+            </li>
         </ul>
     </nav>
+
+    <script>
+        var themeDarkIcon = document.getElementById("theme-toggle-dark");
+        var themeLightIcon = document.getElementById("theme-toggle-light");
+        var themeSystemIcon = document.getElementById("theme-toggle-system");
+
+        function setThemeVisibility(themeParameter) {
+            switch (themeParameter) {
+                case "system":
+                    themeSystemIcon.classList.toggle("hidden");
+                    break;
+                case "light":
+                    themeLightIcon.classList.toggle("hidden");
+                    break;
+                case "dark": themeDarkIcon.classList.toggle("hidden");
+            }
+        }
+
+        function changeTheme() {
+            if (themeSystemIcon.classList.contains("hidden") == false) {
+                themeSystemIcon.classList.toggle("hidden");
+                themeLightIcon.classList.toggle("hidden");
+                localStorage.setItem("color-theme", "light");
+                document.documentElement.classList.remove('dark');
+            } else if (themeLightIcon.classList.contains("hidden") == false) {
+                themeLightIcon.classList.toggle("hidden");
+                themeDarkIcon.classList.toggle("hidden");
+                localStorage.setItem("color-theme", "dark");
+                document.documentElement.classList.add('dark');
+            } else if (themeDarkIcon.classList.contains("hidden") == false) {
+                themeDarkIcon.classList.toggle("hidden");
+                themeSystemIcon.classList.toggle("hidden");
+                localStorage.removeItem("color-theme");
+                if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    document.documentElement.classList.add('dark');
+                }
+            } else {
+                /* default fallback to system preference */
+                themeSystemIcon.classList.remove("hidden");
+                themeLightIcon.classList.add("hidden");
+                themeDarkIcon.classList.add("hidden");
+                localStorage.removeItem("color-theme");
+                if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    document.documentElement.classList.add('dark');
+                }
+            }
+        }
+
+        function setupThemeIndicator() {
+            /* load theme variable from local storage */
+            if (localStorage.getItem("color-theme") === "dark" || (!("color-theme" in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                var themeParameter = "dark";
+            } else if (localStorage.getItem("color-theme") === "light" || (!("color-theme" in localStorage) && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+                var themeParameter = "light";
+            } else {
+                var themeParameter = "system";
+            }
+
+            setThemeVisibility(themeParameter);
+        }
+
+        window.onload = setupThemeIndicator;
+    </script>
 </header>
