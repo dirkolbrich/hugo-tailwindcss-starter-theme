@@ -121,9 +121,9 @@
 
         function setupThemeIndicator() {
             /* load theme variable from local storage */
-            if (localStorage.getItem("color-theme") === "dark" || (!("color-theme" in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            if (localStorage.getItem("color-theme") === "dark") {
                 var themeParameter = "dark";
-            } else if (localStorage.getItem("color-theme") === "light" || (!("color-theme" in localStorage) && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+            } else if (localStorage.getItem("color-theme") === "light") {
                 var themeParameter = "light";
             } else {
                 var themeParameter = "system";
