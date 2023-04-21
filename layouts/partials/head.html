@@ -15,13 +15,7 @@
     {{ end -}}
     {{ hugo.Generator }}
 
-    {{- $styles := resources.Get "css/styles.css" | postCSS (dict "config" "./assets/css/postcss.config.js") -}}
-    {{- if .Site.IsServer }}
-    <link rel="stylesheet" href="{{ $styles.RelPermalink }}">
-    {{ else }}
-    {{- $styles := $styles| minify | fingerprint | resources.PostProcess -}}
-    <link rel="stylesheet" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}">
-    {{ end -}}
+    {{ partialCached "css.html" . }}
 
     <script>
         // On page load or when changing themes, best to add inline in `head` to avoid FOUC

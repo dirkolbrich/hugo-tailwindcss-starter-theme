@@ -8,7 +8,7 @@ description = "A boilerplate starter theme using Tailwind CSS."
 homepage = "https://github.com/dirkolbrich/hugo-tailwindcss-starter-theme"
 tags = ["Hugo", "Tailwind CSS", "theme", "starter", "boilerplate"]
 features = []
-min_version = "0.69.0"
+min_version = "0.88.0"
 
 [author]
   name = "Dirk Olbrich"
