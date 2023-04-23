@@ -9,7 +9,8 @@ Starter files for a Hugo theme with Tailwind CSS.
   - [Aspect Ratio](https://github.com/tailwindlabs/tailwindcss-aspect-ratio) to give elements a fixed aspect ratio
   - [Line Clamp](https://github.com/tailwindlabs/tailwindcss-line-clamp) for truncating text
 - use [Hugo Pipes](https://gohugo.io/hugo-pipes/) to build and load css based on `dev` or `build` environment
-- purge unused css classes with [PurgeCSS](https://www.purgecss.com) for `build`, but __not__ in `dev`
+- ~purge unused css classes with [PurgeCSS](https://www.purgecss.com) for `build`, but __not__ in `dev`~
+- no need to purge via PurgeCSS anymore, as TailwindCss JIT compiler only builds the necassary CSS classes
 - works as separate theme repo or as a local theme folder within a Hugo site
 - basic template setup with an index page, an about page and a posts category
 - responsive navigation header to hide the nav on small screens
@@ -125,50 +126,7 @@ Included are some helpers for the development phase (not visible in production):
 
 If you don't need any of these helpers anymore, just delete the `{{- partial "dev/dev-tools.html" . -}}` line from `/layouts/_default/baseof.html`.
 
-## How does that work anyway?
-
-Within `postcss.config.js` a `purgecss` function is defined, which is only called based on the environment variable `HUGO_ENVIRONMENT === 'production'`.
-
-```js
-const themeDir = __dirname + '/../../';
-
-const purgecss = require('@fullhuman/postcss-purgecss')({
-    // see https://gohugo.io/hugo-pipes/postprocess/#css-purging-with-postcss
-    content: [
-        './hugo_stats.json',
-        themeDir + '/hugo_stats.json',
-        'exampleSite/hugo_stats.json',
-    ],
-    safelist : [ /type/ ], // this helps to not purge type attributes, this is needed for the Typography plugin
-    defaultExtractor: (content) => {
-        let els = JSON.parse(content).htmlElements;
-        return els.tags.concat(els.classes, els.ids);
-    }
-})
-
-module.exports = {    
-    plugins: [
-        require('tailwindcss')(themeDir + 'assets/css/tailwind.config.js'),
-        require('autoprefixer')({
-            path: [themeDir]
-        }),
-        ...(process.env.HUGO_ENVIRONMENT === 'production' ? [purgecss] : [])
-    ]
-}
-```
-
-During the build process Hugo Pipes checks this variable too and build the `styles.css` with some additional minification. This snippet is located in `/layouts/partials/head.html`.
-
-```html
-{{ $styles := resources.Get "css/styles.css" | postCSS (dict "config" "./assets/css/postcss.config.js") }}
-{{ if .Site.IsServer }}
-    <link rel="stylesheet" href="{{ $styles.RelPermalink }}">
-{{ else }}
-    {{ $styles := $styles| minify | fingerprint | resources.PostProcess }}
-    <link rel="stylesheet" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}">
-{{ end }}
-```
-
 ## Reference
 
-Documentation for Hugo's [PostCSS setup](https://gohugo.io/hugo-pipes/postprocess/).
+- documentation for Hugo's [PostCSS setup](https://gohugo.io/hugo-pipes/postprocess/)
+- inspiration to make TailwindCSS v3 JIT-compiler work with Hugo in dev and production mode via a [blog post by Brycs Wray](https://www.brycewray.com/posts/2022/03/making-tailwind-jit-work-hugo-version-3-edition/)

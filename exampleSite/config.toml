@@ -16,9 +16,6 @@ copyright = "Copyright © 2019, Dirk Olbrich, all rights reserved."
 
     favicon = "favicon.ico"
 
-[build]
-  writeStats = true
-
 # syntax highlight settings
 [markup]
   [markup.highlight]

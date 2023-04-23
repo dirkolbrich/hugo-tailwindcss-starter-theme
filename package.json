@@ -6,9 +6,6 @@
     "repository": "https://github.com/dirkolbrich/hugo-theme-tailwindcss-starter",
     "author": "dirkolbrich <github@dirkolbrich.de>",
     "license": "MIT",
-    "scripts": {
-        "start": "hugo --gc --minify"
-    },
     "browserslist": [
         "last 1 version",
         "> 1%",
@@ -16,15 +13,13 @@
         "not dead"
     ],
     "dependencies": {
-        "@fullhuman/postcss-purgecss": "^5.x",
-        "autoprefixer": "^10.x",
-        "postcss": "^8.x",
-        "postcss-cli": "^10.x",
-        "postcss-import": "^15.1.0",
-        "tailwindcss": "^3.x",
         "@tailwindcss/aspect-ratio": "^0.x",
         "@tailwindcss/forms": "^0.x",
         "@tailwindcss/line-clamp": "^0.x",
-        "@tailwindcss/typography": "^0.5.x"
+        "@tailwindcss/typography": "^0.5.x",
+        "autoprefixer": "^10.x",
+        "postcss": "^8.x",
+        "postcss-cli": "^10.x",
+        "tailwindcss": "^3.x"
     }
 }
