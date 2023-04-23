@@ -10,7 +10,7 @@ Starter files for a Hugo theme with Tailwind CSS.
   - [Line Clamp](https://github.com/tailwindlabs/tailwindcss-line-clamp) for truncating text
 - use [Hugo Pipes](https://gohugo.io/hugo-pipes/) to build and load css based on `dev` or `build` environment
 - ~purge unused css classes with [PurgeCSS](https://www.purgecss.com) for `build`, but __not__ in `dev`~
-- no need to purge via PurgeCSS anymore, as TailwindCss JIT compiler only builds the necassary CSS classes
+- no need to purge via PurgeCSS anymore, as the TailwindCSS JIT compiler only builds the necessary CSS classes
 - works as separate theme repo or as a local theme folder within a Hugo site
 - basic template setup with an index page, an about page and a posts category
 - responsive navigation header to hide the nav on small screens
@@ -33,14 +33,7 @@ npm install -g postcss-cli
 npm install -g autoprefixer
 ```
 
-Make sure to use a minimum Hugo version of v0.69.0 and above.
-
-Set the `writeStats` option in your Hugo `config` file, so that purging of CSS classes works in production. See `/exampleSite/config.toml` as a guideline.
-
-```toml
-[build]
-  writeStats = true
-```
+Make sure to use a minimum Hugo version of v0.88.0 and above.
 
 ## Basic usage to develop a separate Theme repo
 
