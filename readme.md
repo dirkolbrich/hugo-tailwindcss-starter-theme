@@ -122,4 +122,4 @@ If you don't need any of these helpers anymore, just delete the `{{- partial "de
 ## Reference
 
 - documentation for Hugo's [PostCSS setup](https://gohugo.io/hugo-pipes/postprocess/)
-- inspiration to make TailwindCSS v3 JIT-compiler work with Hugo in dev and production mode via a [blog post by Brycs Wray](https://www.brycewray.com/posts/2022/03/making-tailwind-jit-work-hugo-version-3-edition/)
+- inspiration to make TailwindCSS v3 JIT-compiler work with Hugo in dev and production mode via a [blog post by Bryce Wray](https://www.brycewray.com/posts/2022/03/making-tailwind-jit-work-hugo-version-3-edition/)
