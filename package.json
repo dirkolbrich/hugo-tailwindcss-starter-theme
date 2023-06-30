@@ -15,7 +15,6 @@
     "dependencies": {
         "@tailwindcss/aspect-ratio": "^0.x",
         "@tailwindcss/forms": "^0.x",
-        "@tailwindcss/line-clamp": "^0.x",
         "@tailwindcss/typography": "^0.5.x",
         "autoprefixer": "^10.x",
         "postcss": "^8.x",
