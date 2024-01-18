@@ -4,7 +4,7 @@ baseurl = "http://example.com/"
 title = "Hugo Tailwindcss Starter"
 
 author = "Dirk Olbrich"
-copyright = "Copyright © 2019-2023, Dirk Olbrich, all rights reserved."
+copyright = "Copyright © 2019-2024, Dirk Olbrich, all rights reserved."
 
 [params]
     name = "Hugo Tailwindcss Starter"
