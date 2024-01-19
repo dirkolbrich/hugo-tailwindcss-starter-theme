@@ -57,10 +57,10 @@ git init
 npm install
 ```
 
-- edit the `config.toml` file in `exampleSite/` to reflect the `new-theme-name`
+- edit the `hugo.toml` file in `exampleSite/` to reflect the `new-theme-name`
 
 ```toml
-# in config.toml
+# in hugo.toml
 theme = "new-theme-name" # your new theme name here
 ```
 
@@ -93,10 +93,10 @@ rm -rf .git
 npm install
 ```
 
-- edit the `config.toml` file in `new-site/` to reflect the new-theme-name
+- edit the `hugo.toml` file in `new-site/` to reflect the new-theme-name
 
 ```toml
-# in config.toml
+# in hugo.toml
 theme = "new-theme-name" # your new theme name here
 ```
 
