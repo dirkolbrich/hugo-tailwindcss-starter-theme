@@ -25,3 +25,26 @@ copyright = "Copyright © 2019-2024, Dirk Olbrich, all rights reserved."
   [security.node.permissions]
     # Theme (layouts, assets, node_modules) lives in the parent directory when developing with --themesDir=../..
     allowRead = [".."]
+  [security.exec]
+    allow = ['^(dart-)?sass$', '^go$', '^git$', '^node$', '^postcss$', '^tailwindcss$']
+
+# Tailwind CSS v4 setup with Hugo's css.TailwindCSS
+# see https://gohugo.io/functions/css/tailwindcss/
+[build]
+  [build.buildStats]
+    enable = true
+  [[build.cachebusters]]
+    source = 'assets/notwatching/hugo_stats\.json'
+    target = 'css'
+  [[build.cachebusters]]
+    source = '(postcss|tailwind)\.config\.js'
+    target = 'css'
+
+[module]
+  [[module.mounts]]
+    source = 'assets'
+    target = 'assets'
+  [[module.mounts]]
+    disableWatch = true
+    source = 'hugo_stats.json'
+    target = 'assets/notwatching/hugo_stats.json'

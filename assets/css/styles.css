@@ -1,13 +1,22 @@
-/* TailwindCSS base styles */
-/* see https://tailwindcss.com/docs/functions-and-directives#tailwind */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-@tailwind variants;
+/* TailwindCSS v4 entry file */
+/* see https://tailwindcss.com/docs/functions-and-directives */
+@import "tailwindcss";
+
+/* official plugins */
+@plugin "@tailwindcss/typography";
+@plugin "@tailwindcss/forms";
+
+/* let Tailwind scan the class names Hugo collects in hugo_stats.json */
+/* (needed explicitly, as Tailwind respects .gitignore) */
+@source "hugo_stats.json";
+
+/* toggle dark mode manually by a `dark` class on the html element */
+/* see https://tailwindcss.com/docs/dark-mode */
+@custom-variant dark (&:where(.dark, .dark *));
 
 /* Site Specific */
-/* put site specific css styles here using the @layer directive */
-/* see https://tailwindcss.com/docs/functions-and-directives#layer */
+/* put site specific css styles here */
+/* see https://tailwindcss.com/docs/adding-custom-styles */
 @layer components {
     .welcome-headline {
         @apply text-sky-600;
