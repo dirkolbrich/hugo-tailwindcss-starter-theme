@@ -15,7 +15,9 @@
     {{ end -}}
     {{ hugo.Generator }}
 
-    {{ partialCached "css.html" . }}
+    {{ with (templates.Defer (dict "key" "global")) }}
+    {{ partial "css.html" . }}
+    {{ end }}
 
     <script>
         // On page load or when changing themes, best to add inline in `head` to avoid FOUC

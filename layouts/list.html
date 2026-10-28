@@ -1,7 +1,7 @@
 {{ define "main" }}
 {{ range .Pages }}
 <article
-    class="justify-self-center mx-auto mb-16 px-6 sm:px-4 md:px-0 prose dark:prose-invert prose-slate lg:prose-lg hover:prose-a:text-sky-500">
+    class="justify-self-center mx-auto mb-16 px-6 sm:px-4 md:px-0 prose dark:prose-invert prose-slate lg:prose-lg prose-a:hover:text-sky-500">
     <h1><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
     {{ .Content }}
 </article>
