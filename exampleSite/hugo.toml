@@ -1,5 +1,5 @@
 theme = "hugo-tailwindcss-starter-theme"
-languageCode = "en-us"
+locale = "en-us"
 baseurl = "http://example.com/"
 title = "Hugo Tailwindcss Starter"
 
@@ -20,3 +20,8 @@ copyright = "Copyright © 2019-2024, Dirk Olbrich, all rights reserved."
 [markup]
   [markup.highlight]
     style = "dracula"
+
+[security]
+  [security.node.permissions]
+    # Theme (layouts, assets, node_modules) lives in the parent directory when developing with --themesDir=../..
+    allowRead = [".."]
